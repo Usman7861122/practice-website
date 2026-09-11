@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact &amp; Book — Lumen Dermatology</title>
+<meta name="description" content="Request an appointment at Lumen Dermatology in Pasadena, or find our address, phone, and hours.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%231F3B36'/%3E%3Cstop offset='1' stop-color='%23DD8264'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='20' cy='20' r='18' fill='url(%23g)'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container nav">
+    <a href="index.html" class="nav__logo"><span class="nav__logo-mark" aria-hidden="true"></span>Lumen Dermatology</a>
+    <nav class="nav__links" aria-label="Primary">
+      <a class="nav__link" href="index.html">Home</a>
+      <a class="nav__link" href="about.html">About</a>
+      <a class="nav__link" href="services.html">Services</a>
+      <a class="nav__link" href="doctors.html">Doctors</a>
+      <a class="nav__link" href="blog/index.html">Journal</a>
+      <a class="nav__link" href="contact.html" aria-current="page">Contact</a>
+    </nav>
+    <div class="nav__right">
+      <a href="contact.html" class="btn btn--primary nav__cta">Book a Consultation</a>
+      <button class="nav__toggle" aria-expanded="false" aria-controls="mobile-nav" aria-label="Open menu"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-nav" id="mobile-nav">
+  <a class="mobile-nav__link" href="index.html">Home</a>
+  <a class="mobile-nav__link" href="about.html">About</a>
+  <a class="mobile-nav__link" href="services.html">Services</a>
+  <a class="mobile-nav__link" href="doctors.html">Doctors</a>
+  <a class="mobile-nav__link" href="blog/index.html">Journal</a>
+  <a class="mobile-nav__link" href="contact.html">Contact</a>
+  <a class="btn btn--secondary btn--block mobile-nav__cta" href="contact.html">Book a Consultation</a>
+</div>
+
+<main id="main">
+
+  <section class="page-hero">
+    <div class="container">
+      <p class="eyebrow reveal">Contact &amp; Booking</p>
+      <h1 class="page-hero__title reveal">Let's find you the right appointment.</h1>
+      <p class="page-hero__subtitle reveal">Fill out the form and our care team will follow up within one business day to confirm a time. For anything urgent, please call us directly.</p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0;">
+    <div class="container">
+      <div class="grid grid--2" style="gap:2.5rem; align-items:start;">
+
+        <div class="form-shell reveal">
+          <h2 class="service-card__title" style="font-size:1.4rem; margin-bottom:1.5rem;">Request an appointment</h2>
+          <form data-form novalidate>
+            <div class="form__row form__row--2">
+              <div class="form__group">
+                <label class="form__label" for="fullname">Full name <span class="req">*</span></label>
+                <input class="form__input" type="text" id="fullname" name="fullname" autocomplete="name" required>
+              </div>
+              <div class="form__group">
+                <label class="form__label" for="phone">Phone <span class="req">*</span></label>
+                <input class="form__input" type="tel" id="phone" name="phone" autocomplete="tel" required>
+              </div>
+            </div>
+            <div class="form__group">
+              <label class="form__label" for="email">Email <span class="req">*</span></label>
+              <input class="form__input" type="email" id="email" name="email" autocomplete="email" required>
+            </div>
+            <div class="form__row form__row--2">
+              <div class="form__group">
+                <label class="form__label" for="specialty">What is this about? <span class="req">*</span></label>
+                <select class="form__select" id="specialty" name="specialty" required>
+                  <option value="" disabled selected>Select one</option>
+                  <option>Medical Dermatology</option>
+                  <option>Cosmetic Dermatology</option>
+                  <option>Surgical Dermatology</option>
+                  <option>Pediatric Dermatology</option>
+                  <option>Laser &amp; Light Therapy</option>
+                  <option>Skin Cancer Screening</option>
+                  <option>Not sure — please advise</option>
+                </select>
+              </div>
+              <div class="form__group">
+                <label class="form__label" for="preferred-date">Preferred date</label>
+                <input class="form__input" type="date" id="preferred-date" name="preferred-date">
+                <span class="form__hint">We'll confirm the closest available time.</span>
+              </div>
+            </div>
+            <div class="form__group">
+              <label class="form__label" for="message">Tell us what's going on <span class="req">*</span></label>
+              <textarea class="form__textarea" id="message" name="message" required></textarea>
+            </div>
+            <div class="form__group" style="flex-direction:row; align-items:flex-start; gap:0.65rem;">
+              <input type="checkbox" id="consent" name="consent" required style="margin-top:0.3rem; width:18px; height:18px; flex-shrink:0;">
+              <label class="form__label" for="consent" style="font-weight:400;">I consent to being contacted by phone or email about this request. <span class="req">*</span></label>
+            </div>
+            <button class="btn btn--primary btn--block" type="submit" data-label="Request appointment">Request appointment</button>
+            <div class="form__success" data-form-success tabindex="-1">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>
+              Thanks — we'll be in touch within one business day to confirm your appointment.
+            </div>
+            <p class="form__disclaimer">This form is for scheduling requests only and isn't monitored for medical emergencies. If this is urgent, please call the office directly.</p>
+          </form>
+        </div>
+
+        <div class="reveal">
+          <div class="card" style="padding:0; overflow:hidden;">
+            <div class="map-frame" role="img" aria-label="Map showing Lumen Dermatology's location on Meridian Avenue, Pasadena">
+              Map placeholder — embed your real map here
+            </div>
+            <div style="padding: 1.75rem 2rem;">
+              <div class="contact-info__item">
+                <div class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-5.7-7-11a7 7 0 1 1 14 0c0 5.3-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
+                <div><strong>Visit us</strong><span>412 Meridian Avenue, Suite 210<br>Pasadena, CA 91101</span></div>
+              </div>
+              <div class="contact-info__item">
+                <div class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h4l2 5-2.5 1.5a11 11 0 0 0 5 5L14 14l5 2v4a2 2 0 0 1-2 2A15 15 0 0 1 4 7a2 2 0 0 1 2-2Z"/></svg></div>
+                <div><strong>Call us</strong><a href="tel:+16265550142">(626) 555-0142</a></div>
+              </div>
+              <div class="contact-info__item">
+                <div class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg></div>
+                <div><strong>Email us</strong><a href="mailto:hello@lumenderm.com">hello@lumenderm.com</a></div>
+              </div>
+              <div class="contact-info__item">
+                <div class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg></div>
+                <div><strong>Hours</strong><span>Mon–Fri 8am–6pm · Sat 9am–2pm<br>Sunday: Closed</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <div class="footer__brand"><span class="nav__logo-mark" aria-hidden="true"></span>Lumen Dermatology</div>
+        <p class="footer__tagline">Board-certified dermatology and skin health care, guided by evidence and delivered with warmth.</p>
+        <div class="footer__social">
+          <a href="#" aria-label="Lumen Dermatology on Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
+          <a href="#" aria-label="Lumen Dermatology on Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 9h3V5h-3a4 4 0 0 0-4 4v3H7v4h3v6h4v-6h3l1-4h-4V9a1 1 0 0 1 1-1Z"/></svg></a>
+          <a href="#" aria-label="Lumen Dermatology on LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 11v5M8 8v.01M12 16v-3.2c0-1 .8-1.8 1.8-1.8s1.2.8 1.2 1.8V16"/></svg></a>
+        </div>
+      </div>
+      <div class="footer__col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="about.html">About the Practice</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="doctors.html">Our Doctors</a></li>
+          <li><a href="blog/index.html">Journal</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>Visit</h4>
+        <ul>
+          <li>412 Meridian Avenue, Suite 210<br>Pasadena, CA 91101</li>
+          <li><a href="tel:+16265550142">(626) 555-0142</a></li>
+          <li><a href="mailto:hello@lumenderm.com">hello@lumenderm.com</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>Hours</h4>
+        <ul>
+          <li>Mon–Fri: 8:00am – 6:00pm</li>
+          <li>Saturday: 9:00am – 2:00pm</li>
+          <li>Sunday: Closed</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>&copy; <span class="js-year">2026</span> Lumen Dermatology. All rights reserved. (Placeholder practice for demo purposes.)</span>
+      <div class="footer__legal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Accessibility</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js" defer></script>
+</body>
+</html>
