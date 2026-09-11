@@ -322,9 +322,20 @@ h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 600; letter-spac
   background: radial-gradient(circle at 32% 28%, var(--coral-tint), transparent 60%),
               radial-gradient(circle at 68% 70%, var(--teal-pale), transparent 55%),
               linear-gradient(135deg, var(--teal) 0%, var(--teal-light) 45%, var(--coral) 100%);
-  filter: blur(0.5px);
+  filter: blur(22px);
   animation: blob-morph 14s var(--ease-out) infinite alternate;
+  z-index: 1;
+}
+/* A photo layered over the glow-blob turns it into a soft ambient halo. */
+.hero__photo {
+  position: absolute;
+  inset: 9%;
+  width: 82%;
+  height: 82%;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
   box-shadow: var(--shadow-lg);
+  z-index: 2;
 }
 @keyframes blob-morph {
   0%   { border-radius: 42% 58% 63% 37% / 45% 40% 60% 55%; transform: rotate(0deg) scale(1); }
@@ -344,6 +355,7 @@ h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 600; letter-spac
   position: absolute;
   bottom: 6%;
   left: -6%;
+  z-index: 3;
   background: var(--surface);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-lg);
@@ -424,6 +436,19 @@ h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 600; letter-spac
 }
 .card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
 
+/* Photo cover for a card (services / treat cards) */
+.card__cover {
+  aspect-ratio: 4/3;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  margin-bottom: 1.25rem;
+}
+.card__cover img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  transition: transform var(--dur-slow) var(--ease-out);
+}
+.card:hover .card__cover img { transform: scale(1.06); }
+
 .icon-badge {
   width: 52px; height: 52px;
   border-radius: var(--radius-sm);
@@ -493,7 +518,11 @@ h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 600; letter-spac
   padding: clamp(2.25rem, 5vw, 4rem);
   position: relative;
   overflow: hidden;
+  display: grid;
+  gap: 2rem;
+  align-items: center;
 }
+@media (min-width: 720px) { .testimonial--photo { grid-template-columns: 1fr 220px; } }
 .testimonial::before {
   content: "\201C";
   font-family: var(--font-display);
@@ -514,6 +543,105 @@ h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 600; letter-spac
 .testimonial__author-mark { width: 42px; height: 42px; border-radius: 50%; background: var(--coral); flex-shrink: 0; }
 .testimonial__author strong { display: block; }
 .testimonial__author span { font-size: 0.85rem; color: var(--teal-pale); }
+.testimonial__photo {
+  position: relative;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  aspect-ratio: 4/5;
+  max-width: 220px;
+  box-shadow: var(--shadow-lg);
+  justify-self: center;
+}
+.testimonial__photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* ---------- Standalone portrait photo (page-hero companion) ---------- */
+.photo-portrait {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  aspect-ratio: 4/5;
+  max-width: 420px;
+  margin-inline: auto;
+  box-shadow: var(--shadow-lg);
+}
+.photo-portrait img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* ---------- Full-width photo band with caption ---------- */
+.photo-band {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  aspect-ratio: 21/9;
+  box-shadow: var(--shadow-md);
+}
+.photo-band img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.photo-band__caption {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  padding: 1.5rem clamp(1.25rem, 4vw, 2.5rem);
+  background: linear-gradient(0deg, rgba(26, 33, 30, 0.72), transparent);
+  color: var(--ivory);
+  font-family: var(--font-display);
+  font-size: clamp(1.05rem, 1.6vw, 1.3rem);
+  max-width: 46ch;
+}
+
+/* ---------- Mosaic photo grid ---------- */
+.mosaic-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+.mosaic-grid__wide { grid-column: 1 / -1; aspect-ratio: 21/9; }
+.mosaic-grid__item {
+  position: relative;
+  aspect-ratio: 3/4;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+.mosaic-grid__item img { width: 100%; height: 100%; object-fit: cover; display: block; }
+@media (max-width: 720px) {
+  .mosaic-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ---------- Small decorative accent photo ---------- */
+.accent-photo {
+  width: 132px;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  float: right;
+  margin: 0 0 1rem 1.5rem;
+}
+@media (max-width: 640px) { .accent-photo { display: none; } }
+
+/* ---------- Treatment gallery strip ---------- */
+.gallery-strip {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+}
+@media (min-width: 720px) { .gallery-strip { grid-template-columns: repeat(4, 1fr); } }
+.gallery-strip__item {
+  position: relative;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  aspect-ratio: 4/5;
+  box-shadow: var(--shadow-sm);
+}
+.gallery-strip__item img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  transition: transform var(--dur-slow) var(--ease-out);
+}
+.gallery-strip__item:hover img { transform: scale(1.07); }
+.gallery-strip__label {
+  position: absolute; left: 0; right: 0; bottom: 0;
+  padding: 0.75rem 1rem;
+  background: linear-gradient(0deg, rgba(26, 33, 30, 0.72), transparent);
+  color: var(--ivory);
+  font-size: 0.82rem;
+  font-weight: 600;
+}
 
 /* ---------- CTA band ---------- */
 .cta-band {
@@ -603,7 +731,13 @@ h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 600; letter-spac
   aspect-ratio: 16/10;
   border-radius: var(--radius-md);
   margin-bottom: 1.5rem;
+  overflow: hidden;
 }
+.blog-card__cover img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  transition: transform var(--dur-slow) var(--ease-out);
+}
+.card:hover .blog-card__cover img { transform: scale(1.05); }
 
 .article__header { max-width: 70ch; margin-inline: auto; text-align: center; }
 .article__title { font-size: clamp(2rem, 4vw, 2.8rem); margin-top: 0.75rem; }
@@ -613,6 +747,22 @@ h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 600; letter-spac
   border-radius: var(--radius-lg);
   margin: 2.5rem auto;
   max-width: var(--container);
+  overflow: hidden;
+}
+.article__cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.article__inline-figure { margin: 2.25rem 0; }
+.article__inline-figure img {
+  width: 100%;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  display: block;
+}
+.article__inline-figure figcaption {
+  margin-top: 0.65rem;
+  font-size: 0.82rem;
+  color: var(--ink-faint);
+  text-align: center;
 }
 .article__body {
   max-width: 68ch;

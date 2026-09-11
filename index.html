@@ -55,9 +55,10 @@
           <a href="services.html" class="btn btn--ghost">Explore Services</a>
         </div>
       </div>
-      <div class="hero__visual" aria-hidden="true">
-        <div class="hero__visual-ring"></div>
-        <div class="glow-blob"></div>
+      <div class="hero__visual">
+        <div class="hero__visual-ring" aria-hidden="true"></div>
+        <div class="glow-blob" aria-hidden="true"></div>
+        <img class="hero__photo" src="images/hero-doctor.webp" alt="A Lumen Dermatology physician in clinic" width="1400" height="788" fetchpriority="high">
         <div class="hero__badge">
           <span class="hero__badge-dot"></span>
           <div><strong>4.9 / 5</strong><span>from 1,240+ patient reviews</span></div>
@@ -85,6 +86,7 @@
 
       <div class="grid grid--3 reveal-stagger">
         <article class="card reveal">
+          <div class="card__cover"><img src="images/medical-dermatology.webp" alt="Close examination of skin affected by rosacea" width="900" height="900" loading="lazy"></div>
           <div class="icon-badge" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c3.5 4 6 7.4 6 10.5a6 6 0 1 1-12 0C6 10.4 8.5 7 12 3Z"/></svg>
           </div>
@@ -94,6 +96,7 @@
         </article>
 
         <article class="card card--coral reveal">
+          <div class="card__cover"><img src="images/cosmetic-dermatology.webp" alt="A cosmetic injectable treatment being carefully administered" width="900" height="600" loading="lazy"></div>
           <div class="icon-badge" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M3 12h3M18 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg>
           </div>
@@ -103,6 +106,7 @@
         </article>
 
         <article class="card reveal">
+          <div class="card__cover"><img src="images/skin-screening.webp" alt="Patient prepared for a clinical skin screening visit" width="900" height="1350" loading="lazy"></div>
           <div class="icon-badge" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="7"/><path d="m17 17 4 4"/><path d="M9.5 12h5M12 9.5v5"/></svg>
           </div>
@@ -152,11 +156,16 @@
 
   <section class="section">
     <div class="container">
-      <div class="testimonial reveal">
-        <p class="testimonial__quote">"I'd put off a mole check for two years out of dread. Dr. Osei walked me through exactly what she was looking for, in plain language, the whole time. I've never felt that at ease at a dermatologist."</p>
-        <div class="testimonial__author">
-          <div class="testimonial__author-mark" aria-hidden="true"></div>
-          <div><strong>Marisol T.</strong><span>Patient since 2021</span></div>
+      <div class="testimonial testimonial--photo reveal">
+        <div>
+          <p class="testimonial__quote">"I'd put off a mole check for two years out of dread. Dr. Osei walked me through exactly what she was looking for, in plain language, the whole time. I've never felt that at ease at a dermatologist."</p>
+          <div class="testimonial__author">
+            <div class="testimonial__author-mark" aria-hidden="true"></div>
+            <div><strong>Marisol T.</strong><span>Patient since 2021</span></div>
+          </div>
+        </div>
+        <div class="testimonial__photo">
+          <img src="images/testimonial-patient.webp" alt="A patient at ease after a skin consultation" width="900" height="1200" loading="lazy">
         </div>
       </div>
     </div>
@@ -170,14 +179,14 @@
       </div>
       <div class="grid grid--2 reveal-stagger">
         <a class="card reveal" href="blog/retinoids-101.html" style="text-decoration:none;">
-          <div class="blog-card__cover" style="background:linear-gradient(135deg,var(--teal),var(--teal-light));" aria-hidden="true"></div>
+          <div class="blog-card__cover"><img src="images/blog-retinoids-cover.webp" alt="" width="1200" height="800" loading="lazy"></div>
           <span class="tag">Medical Dermatology</span>
           <h3 class="blog-card__title">Retinoids 101: A Dermatologist's Guide to Getting Started</h3>
           <p class="blog-card__excerpt">Why the "start slow" advice exists, and the routine that actually prevents the peeling.</p>
           <div class="blog-card__meta"><span>Dr. Aisha Rahman</span><span>·</span><span>7 min read</span></div>
         </a>
         <a class="card reveal" href="blog/skin-cell-turnover.html" style="text-decoration:none;">
-          <div class="blog-card__cover" style="background:linear-gradient(135deg,var(--coral-deep),var(--coral));" aria-hidden="true"></div>
+          <div class="blog-card__cover"><img src="images/blog-skin-cycle-cover.webp" alt="" width="1000" height="625" loading="lazy"></div>
           <span class="tag">Skin Science</span>
           <h3 class="blog-card__title">The Skin Cycle: What Actually Changes as Cells Turn Over</h3>
           <p class="blog-card__excerpt">A realistic timeline for when a new routine should start showing results — and when to stop waiting.</p>
