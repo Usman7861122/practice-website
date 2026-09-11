@@ -66,6 +66,38 @@
     revealEls.forEach(function (el) { el.classList.add("is-visible"); });
   }
 
+  /* ---------- Decades tabs ---------- */
+  var decadesTabs = document.querySelectorAll(".decades__tab");
+
+  if (decadesTabs.length) {
+    var selectDecade = function (decade) {
+      decadesTabs.forEach(function (tab) {
+        var isActive = tab.getAttribute("data-decade") === decade;
+        tab.classList.toggle("is-active", isActive);
+        tab.setAttribute("aria-selected", isActive ? "true" : "false");
+        tab.tabIndex = isActive ? 0 : -1;
+      });
+      document.querySelectorAll(".decades__panel").forEach(function (panel) {
+        panel.hidden = panel.getAttribute("data-decade-panel") !== decade;
+      });
+    };
+
+    decadesTabs.forEach(function (tab, i) {
+      tab.addEventListener("click", function () {
+        selectDecade(tab.getAttribute("data-decade"));
+      });
+
+      tab.addEventListener("keydown", function (e) {
+        var dir = e.key === "ArrowRight" ? 1 : e.key === "ArrowLeft" ? -1 : 0;
+        if (!dir) return;
+        e.preventDefault();
+        var next = decadesTabs[(i + dir + decadesTabs.length) % decadesTabs.length];
+        next.focus();
+        selectDecade(next.getAttribute("data-decade"));
+      });
+    });
+  }
+
   /* ---------- Front-end appointment / contact forms ---------- */
   document.querySelectorAll("[data-form]").forEach(function (form) {
     form.addEventListener("submit", function (e) {
@@ -95,42 +127,21 @@
     });
   });
 
-  /* ---------- Hero photo scroll reveal ---------- */
-  /* Image starts slightly zoomed/cropped and settles into its normal
-     size and crop as the page scrolls, similar in spirit to a
-     scroll-linked "reveal" hero effect, but scoped to the existing
-     photo instead of a dedicated full-page pinned section. */
+  /* ---------- Hero photo reveal ---------- */
+  /* Image loads slightly zoomed/cropped in, then settles to its normal
+     size and crop right away on page load. Plays once, automatically —
+     not tied to scrolling, so it's never missed. A double rAF makes sure
+     the zoomed starting state has actually painted before the
+     "is-revealed" class is added, so the CSS transition has something
+     to animate from instead of snapping straight to the end state. */
   var heroPhoto = document.querySelector(".hero__media-photo");
-  var reduceMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
 
-  if (heroPhoto && !reduceMotionQuery.matches) {
-    var HERO_REVEAL_DISTANCE = 560; // px of scroll over which the effect completes
-    var HERO_START_SCALE = 1.12;
-    var HERO_START_INSET = 7; // percent
-
-    var heroTicking = false;
-
-    var updateHeroReveal = function () {
-      heroTicking = false;
-      var progress = Math.min(Math.max(window.scrollY / HERO_REVEAL_DISTANCE, 0), 1);
-      var scale = HERO_START_SCALE - (HERO_START_SCALE - 1) * progress;
-      var inset = HERO_START_INSET - HERO_START_INSET * progress;
-      heroPhoto.style.setProperty("--reveal-scale", scale.toFixed(4));
-      heroPhoto.style.setProperty("--reveal-inset", inset.toFixed(2) + "%");
-    };
-
-    updateHeroReveal();
-
-    window.addEventListener(
-      "scroll",
-      function () {
-        if (!heroTicking) {
-          window.requestAnimationFrame(updateHeroReveal);
-          heroTicking = true;
-        }
-      },
-      { passive: true }
-    );
+  if (heroPhoto) {
+    window.requestAnimationFrame(function () {
+      window.requestAnimationFrame(function () {
+        heroPhoto.classList.add("is-revealed");
+      });
+    });
   }
 
   /* ---------- Footer year ---------- */
