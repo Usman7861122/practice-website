@@ -387,6 +387,12 @@ h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 600; letter-spac
   object-fit: cover;
   object-position: 68% 18%;
   display: block;
+  transform: scale(var(--reveal-scale, 1));
+  clip-path: inset(var(--reveal-inset, 0%));
+  will-change: transform, clip-path;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero__media-photo { transform: none !important; clip-path: none !important; }
 }
 .hero__panel {
   position: relative;

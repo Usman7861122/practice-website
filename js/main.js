@@ -95,6 +95,44 @@
     });
   });
 
+  /* ---------- Hero photo scroll reveal ---------- */
+  /* Image starts slightly zoomed/cropped and settles into its normal
+     size and crop as the page scrolls, similar in spirit to a
+     scroll-linked "reveal" hero effect, but scoped to the existing
+     photo instead of a dedicated full-page pinned section. */
+  var heroPhoto = document.querySelector(".hero__media-photo");
+  var reduceMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+  if (heroPhoto && !reduceMotionQuery.matches) {
+    var HERO_REVEAL_DISTANCE = 560; // px of scroll over which the effect completes
+    var HERO_START_SCALE = 1.12;
+    var HERO_START_INSET = 7; // percent
+
+    var heroTicking = false;
+
+    var updateHeroReveal = function () {
+      heroTicking = false;
+      var progress = Math.min(Math.max(window.scrollY / HERO_REVEAL_DISTANCE, 0), 1);
+      var scale = HERO_START_SCALE - (HERO_START_SCALE - 1) * progress;
+      var inset = HERO_START_INSET - HERO_START_INSET * progress;
+      heroPhoto.style.setProperty("--reveal-scale", scale.toFixed(4));
+      heroPhoto.style.setProperty("--reveal-inset", inset.toFixed(2) + "%");
+    };
+
+    updateHeroReveal();
+
+    window.addEventListener(
+      "scroll",
+      function () {
+        if (!heroTicking) {
+          window.requestAnimationFrame(updateHeroReveal);
+          heroTicking = true;
+        }
+      },
+      { passive: true }
+    );
+  }
+
   /* ---------- Footer year ---------- */
   document.querySelectorAll(".js-year").forEach(function (el) {
     el.textContent = new Date().getFullYear();
