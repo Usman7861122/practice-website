@@ -1,4 +1,4 @@
-/* Lumen Dermatology — site interactions
+/* Lumen Dermatology: site interactions
    Vanilla JS, no dependencies, deferred load. */
 (function () {
   "use strict";
@@ -129,7 +129,7 @@
 
   /* ---------- Hero photo reveal ---------- */
   /* Image loads slightly zoomed/cropped in, then settles to its normal
-     size and crop right away on page load. Plays once, automatically —
+     size and crop right away on page load. Plays once, automatically,
      not tied to scrolling, so it's never missed. A double rAF makes sure
      the zoomed starting state has actually painted before the
      "is-revealed" class is added, so the CSS transition has something
