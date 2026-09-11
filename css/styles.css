@@ -544,37 +544,52 @@ h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 600; letter-spac
 .decades__tab:focus-visible { outline: 2px solid var(--coral); outline-offset: 4px; border-radius: 2px; }
 
 .decades__panels { position: relative; }
-.decades__panel { position: relative; padding-top: 0.25rem; }
-.decades__panel--photo {
+.decades__panel {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  min-height: clamp(440px, 62vh, 620px);
+  padding: 1.75rem 1.25rem;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  justify-content: flex-end;
+  background: linear-gradient(155deg, var(--teal-light) 0%, var(--teal) 100%);
 }
-.decades__photo {
-  position: relative;
-  flex: none;
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  overflow: hidden;
-  border-radius: var(--radius-md);
-  background: rgba(245, 246, 241, 0.06);
+/* [hidden] and .decades__panel are equal specificity, so without this the
+   class's display:flex silently wins over the browser's default
+   [hidden]{display:none} and every panel renders stacked at once. */
+.decades__panel[hidden] { display: none; }
+.decades__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
 }
-.decades__photo img {
+.decades__bg img {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-.decades__panel-body { position: relative; }
+.decades__scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(0deg, rgba(13, 23, 21, 0.88) 0%, rgba(13, 23, 21, 0.58) 40%, rgba(13, 23, 21, 0.12) 70%, rgba(13, 23, 21, 0) 100%);
+}
+.decades__panel-body {
+  position: relative;
+  z-index: 2;
+  max-width: 42rem;
+}
 .decades__numeral {
   position: absolute;
-  top: -1.75rem;
-  right: -0.25rem;
+  top: 1.25rem;
+  right: 1.5rem;
   z-index: 0;
   font-family: var(--font-display);
-  font-size: clamp(7rem, 20vw, 13rem);
+  font-size: clamp(6rem, 18vw, 11rem);
   line-height: 1;
-  color: rgba(245, 246, 241, 0.06);
+  color: rgba(245, 246, 241, 0.08);
   pointer-events: none;
   user-select: none;
 }
@@ -669,14 +684,8 @@ h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 600; letter-spac
     margin-left: -2px;
   }
   .decades__tab.is-active { border-left-color: var(--coral); border-bottom-color: transparent; }
-  .decades__panel { min-height: 360px; }
-  .decades__panel--photo {
-    flex-direction: row;
-    align-items: stretch;
-    gap: 2.5rem;
-  }
-  .decades__photo { flex: 0 0 280px; aspect-ratio: auto; }
-  .decades__panel-body { flex: 1; min-width: 0; }
+  .decades__panel { min-height: clamp(480px, 70vh, 680px); padding: 3rem 3rem 3.25rem; }
+  .decades__panel-body { max-width: 34rem; }
 }
 @media (prefers-reduced-motion: reduce) {
   .decades__tab { transition: none; }
