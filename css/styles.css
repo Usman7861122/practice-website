@@ -402,7 +402,32 @@ h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 600; letter-spac
 /* ---------- Sections ---------- */
 .section { padding-block: var(--space-2xl); }
 .section--alt { background: var(--sage-tint); }
-.section__head { max-width: 640px; margin-bottom: 2.75rem; }
+.section__head { position: relative; max-width: 640px; margin-bottom: 2.75rem; }
+.section__head__content { position: relative; z-index: 1; }
+/* Optional ambient glow for a section head, echoing the hero's signature blob. */
+.section__head__glow {
+  position: absolute;
+  top: 48%;
+  left: 100%;
+  z-index: 0;
+  width: 360px;
+  height: 360px;
+  max-width: 50vw;
+  border-radius: 42% 58% 63% 37% / 45% 40% 60% 55%;
+  background: radial-gradient(circle at 30% 28%, var(--coral-tint), transparent 60%),
+              radial-gradient(circle at 68% 70%, var(--teal-pale), transparent 55%);
+  filter: blur(46px);
+  opacity: 0.75;
+  pointer-events: none;
+  animation: head-glow-morph 18s var(--ease-out) infinite alternate;
+}
+@keyframes head-glow-morph {
+  0%   { border-radius: 42% 58% 63% 37% / 45% 40% 60% 55%; transform: translate(-15%, -50%) rotate(0deg) scale(1); }
+  50%  { border-radius: 58% 42% 40% 60% / 58% 55% 45% 42%; transform: translate(-15%, -50%) rotate(8deg) scale(1.04); }
+  100% { border-radius: 48% 52% 55% 45% / 40% 60% 40% 60%; transform: translate(-15%, -50%) rotate(-6deg) scale(0.98); }
+}
+@media (max-width: 1100px) { .section__head__glow { display: none; } }
+@media (prefers-reduced-motion: reduce) { .section__head__glow { animation: none; } }
 .section__head.center { margin-inline: auto; text-align: center; }
 .section__title { font-size: clamp(1.8rem, 3vw, 2.6rem); }
 .section__intro { margin-top: 1rem; color: var(--ink-soft); font-size: 1.05rem; }
